@@ -12,9 +12,9 @@ all: up
 up:
 	@echo "$(GREEN)[+] Démarrage des services...$(NC)"
 	@docker compose -f $(COMPOSE_FILE) up -d --build
-	@echo "$(GREEN)[+] Nginx dispo sur$(CYAN) http://localhost:8080 $(NC)"
 	@echo "$(GREEN)[+] SSH dispo sur$(CYAN) localhost:4242 $(NC)"
-	@echo "$(GREEN)[+] Tor hidden service dispo → check $(CYAN)docker exec -it tor cat /var/lib/tor/hidden_service/hostname$(NC)"
+	@echo "$(GREEN)[+] Tor hidden service dispo → utilisez cette commande :$(NC)"
+	@echo "    docker exec -it tor cat /var/lib/tor/hidden_service/hostname"
 
 down:
 	@echo "$(GREEN)[+] Arrêt des services...$(NC)"
@@ -30,6 +30,7 @@ clean:
 
 fclean: down
 	@echo "$(GREEN)[+] Nettoyage complet (conteneurs, volumes, images dangling)...$(NC)"
+	@docker volume rm -f 42-ft_onion_tor_data 2>/dev/null || true
 	@docker volume prune -f
 	@docker container prune -f
 

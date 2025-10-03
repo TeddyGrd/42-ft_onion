@@ -2,26 +2,28 @@ services:
   nginx:
     container_name: nginx
     build: ./nginx
-    ports:
-      - "80:80"
     networks:
       - ft_onion_net
   
   tor:
     container_name: tor
     build: ./tor
-    ports:
-      - "9001:9001"
+    depends_on:
+      - nginx
+      - ssh
+    volumes:
+      - tor_data:/var/lib/tor/hidden_service
     networks:
       - ft_onion_net
 
   ssh:
     container_name: ssh
     build: ./ssh
-    ports:
-      - "4242:4242"
     networks:
       - ft_onion_net
+
+volumes:
+  tor_data:
 
 networks:
   ft_onion_net:

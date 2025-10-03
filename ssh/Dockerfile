@@ -7,6 +7,8 @@ RUN apk update && apk add --no-cache \
 
 RUN mkdir -p /var/run/sshd
 
+RUN ssh-keygen -A
+
 COPY sshd_config /etc/ssh/sshd_config
 
 RUN adduser -D user && echo "user:password" | chpasswd
