@@ -1,4 +1,6 @@
-port 4242
+Port 4242
 ListenAddress 0.0.0.0
 PermitRootLogin no
-PasswordAuthentication yes
+PasswordAuthentication no
+PubkeyAuthentication yes
+AuthorizedKeysFile .ssh/authorized_keys
