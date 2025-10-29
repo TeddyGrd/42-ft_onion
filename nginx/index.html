@@ -1,12 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Coucou je suis un test</title>
-    </head>
-    <body>
-        <div>
-            <h1>je fonctionne et je m affiche</h1>
-        </div>
-    </body>
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>Service caché Tor</title>
+		<style>
+  			body{margin:0;padding:2em;font-family:system-ui,Segoe UI,Roboto,Arial;
+       			background:#0e1522;color:#e9f1fb;text-align:center}
+  			main{max-width:600px;margin:auto;border:1px solid #1e2b44;
+       			border-radius:12px;padding:2em;background:#121b2b;
+       			box-shadow:0 6px 18px rgba(0,0,0,.4)}
+  			h1{margin-top:0;font-size:1.8em}
+  			p{color:#9fb7c6;line-height:1.5}
+  			button{cursor:pointer;margin-top:1em;padding:.6em 1.2em;
+         		border:1px solid #274b7b;background:#0f2547;color:#e9f1fb;
+         		border-radius:8px}
+  			#time{margin-top:1em;font-weight:bold;color:#7fb3ff}
+  			footer{margin-top:1.5em;font-size:.85em;color:#95a7bb}
+		</style>
+	</head>
+	<body>
+		<main>
+  			<h1>Bienvenue sur mon service caché Tor</h1>
+  			<p>
+				Ce site est hébergé sur le réseau <strong>Tor</strong>.<br>
+				L’adresse <em>.onion</em> est générée automatiquement et peut changer.
+			</p>
+  			<p>Heure actuelle (locale du visiteur) :</p>
+  			<div id="time">--:--:--</div>
+  			<button id="refresh">Actualiser</button>
+  			<footer>Page interactive servie par Nginx - Projet 42 Cybersécurité</footer>
+		</main>
+		<script>
+			function updateTime(){
+				const now=new Date();
+				document.getElementById('time').textContent=now.toLocaleTimeString();
+			}
+			document.getElementById('refresh').onclick=updateTime;
+			updateTime();
+		</script>
+	</body>
 </html>
