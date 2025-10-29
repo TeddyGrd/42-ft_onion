@@ -12,7 +12,6 @@ all: up
 up:
 	@echo "$(GREEN)[+] Démarrage des services...$(NC)"
 	@docker compose -f $(COMPOSE_FILE) up -d --build
-	@echo "$(GREEN)[+] SSH dispo sur$(CYAN) localhost:4242 $(NC)"
 	@echo "$(GREEN)[+] Tor hidden service dispo > utilisez cette commande :$(NC)"
 	@echo "  docker exec -it tor cat /var/lib/tor/hidden_service/hostname"
 
